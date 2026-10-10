@@ -1,0 +1,80 @@
+{
+  "generated_at_utc": "2026-10-10T08:26:28Z",
+  "source": "Federal Reserve Bank of St. Louis (FRED), keyless CSV endpoint",
+  "note": "한국은행 기준금리는 ECOS API 키 발급 후 phase 2에서 추가 예정",
+  "series": {
+    "UST10Y": {
+      "name": "UST10Y",
+      "series_id": "DGS10",
+      "latest": {
+        "date": "2026-10-08",
+        "value": 5.22
+      },
+      "week_ago": {
+        "date": "2026-10-01",
+        "value": 5.24
+      },
+      "month_ago": {
+        "date": "2026-09-09",
+        "value": 4.83
+      },
+      "pp_1w": -0.02,
+      "pp_1m": 0.39
+    },
+    "UST2Y": {
+      "name": "UST2Y",
+      "series_id": "DGS2",
+      "latest": {
+        "date": "2026-10-08",
+        "value": 4.75
+      },
+      "week_ago": {
+        "date": "2026-10-01",
+        "value": 4.78
+      },
+      "month_ago": {
+        "date": "2026-09-09",
+        "value": 4.43
+      },
+      "pp_1w": -0.03,
+      "pp_1m": 0.32
+    },
+    "FED_TARGET_UPPER": {
+      "name": "FED_TARGET_UPPER",
+      "series_id": "DFEDTARU",
+      "latest": {
+        "date": "2026-10-09",
+        "value": 4.0
+      },
+      "week_ago": {
+        "date": "2026-10-04",
+        "value": 4.0
+      },
+      "month_ago": {
+        "date": "2026-09-18",
+        "value": 4.0
+      },
+      "pp_1w": 0.0,
+      "pp_1m": 0.0
+    },
+    "FED_TARGET_LOWER": {
+      "name": "FED_TARGET_LOWER",
+      "series_id": "DFEDTARL",
+      "latest": {
+        "date": "2026-10-09",
+        "value": 3.75
+      },
+      "week_ago": {
+        "date": "2026-10-04",
+        "value": 3.75
+      },
+      "month_ago": {
+        "date": "2026-09-18",
+        "value": 3.75
+      },
+      "pp_1w": 0.0,
+      "pp_1m": 0.0
+    }
+  },
+  "errors": []
+}

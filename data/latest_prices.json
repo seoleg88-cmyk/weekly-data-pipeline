@@ -1,0 +1,187 @@
+{
+  "generated_at_utc": "2026-10-10T08:26:25Z",
+  "method": "yfinance daily history, trading-day offset (1wk=5 trading days, 1mo=21 trading days)",
+  "assets": {
+    "KOSPI": {
+      "name": "KOSPI",
+      "ticker": "^KS11",
+      "latest": {
+        "date": "2026-10-08",
+        "close": 6625.930176
+      },
+      "week_ago": {
+        "date": "2026-09-30",
+        "close": 6838.040039
+      },
+      "month_ago": {
+        "date": "2026-09-04",
+        "close": 6687.209961
+      },
+      "pct_1w": -3.1019,
+      "pct_1m": -0.9164
+    },
+    "KOSDAQ": {
+      "name": "KOSDAQ",
+      "ticker": "^KQ11",
+      "latest": {
+        "date": "2026-10-08",
+        "close": 892.27002
+      },
+      "week_ago": {
+        "date": "2026-09-30",
+        "close": 855.909973
+      },
+      "month_ago": {
+        "date": "2026-09-04",
+        "close": 813.5
+      },
+      "pct_1w": 4.2481,
+      "pct_1m": 9.6829
+    },
+    "SP500": {
+      "name": "SP500",
+      "ticker": "^GSPC",
+      "latest": {
+        "date": "2026-10-09",
+        "close": 7811.540039
+      },
+      "week_ago": {
+        "date": "2026-10-02",
+        "close": 7722.720215
+      },
+      "month_ago": {
+        "date": "2026-09-10",
+        "close": 7591.700195
+      },
+      "pct_1w": 1.1501,
+      "pct_1m": 2.8958
+    },
+    "NASDAQ": {
+      "name": "NASDAQ",
+      "ticker": "^IXIC",
+      "latest": {
+        "date": "2026-10-09",
+        "close": 27366.169922
+      },
+      "week_ago": {
+        "date": "2026-10-02",
+        "close": 27190.859375
+      },
+      "month_ago": {
+        "date": "2026-09-10",
+        "close": 26081.720703
+      },
+      "pct_1w": 0.6447,
+      "pct_1m": 4.9247
+    },
+    "DOW": {
+      "name": "DOW",
+      "ticker": "^DJI",
+      "latest": {
+        "date": "2026-10-09",
+        "close": 51654.949219
+      },
+      "week_ago": {
+        "date": "2026-10-02",
+        "close": 51176.960938
+      },
+      "month_ago": {
+        "date": "2026-09-10",
+        "close": 52064.101562
+      },
+      "pct_1w": 0.934,
+      "pct_1m": -0.7859
+    },
+    "USDKRW": {
+      "name": "USDKRW",
+      "ticker": "KRW=X",
+      "latest": {
+        "date": "2026-10-10",
+        "close": 1340.900024
+      },
+      "week_ago": {
+        "date": "2026-10-05",
+        "close": 1342.560059
+      },
+      "month_ago": {
+        "date": "2026-09-11",
+        "close": 1348.170044
+      },
+      "pct_1w": -0.1236,
+      "pct_1m": -0.5393
+    },
+    "WTI": {
+      "name": "WTI",
+      "ticker": "CL=F",
+      "latest": {
+        "date": "2026-10-09",
+        "close": 91.849998
+      },
+      "week_ago": {
+        "date": "2026-10-02",
+        "close": 91.110001
+      },
+      "month_ago": {
+        "date": "2026-09-10",
+        "close": 102.480003
+      },
+      "pct_1w": 0.8122,
+      "pct_1m": -10.3728
+    },
+    "BRENT": {
+      "name": "BRENT",
+      "ticker": "BZ=F",
+      "latest": {
+        "date": "2026-10-09",
+        "close": 104.720001
+      },
+      "week_ago": {
+        "date": "2026-10-02",
+        "close": 102.25
+      },
+      "month_ago": {
+        "date": "2026-09-10",
+        "close": 107.629997
+      },
+      "pct_1w": 2.4156,
+      "pct_1m": -2.7037
+    },
+    "GOLD": {
+      "name": "GOLD",
+      "ticker": "GC=F",
+      "latest": {
+        "date": "2026-10-09",
+        "close": 4216.299805
+      },
+      "week_ago": {
+        "date": "2026-10-02",
+        "close": 4162.299805
+      },
+      "month_ago": {
+        "date": "2026-09-10",
+        "close": 4407.299805
+      },
+      "pct_1w": 1.2974,
+      "pct_1m": -4.3337
+    },
+    "BTC-USD": {
+      "name": "BTC-USD",
+      "ticker": "BTC-USD",
+      "latest": {
+        "date": "2026-10-10",
+        "close": 82775.890625
+      },
+      "week_ago": {
+        "date": "2026-10-05",
+        "close": 85786.59375
+      },
+      "month_ago": {
+        "date": "2026-09-19",
+        "close": 81233.679688
+      },
+      "pct_1w": -3.5095,
+      "pct_1m": 1.8985
+    }
+  },
+  "errors": []
+}
