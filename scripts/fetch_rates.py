@@ -21,6 +21,7 @@ API 키가 있으면 더 유연한 JSON API(api.stlouisfed.org)를 쓸 수 있�
 import csv
 import io
 import json
+import os
 import sys
 from datetime import datetime, timezone, timedelta
 
@@ -123,6 +124,8 @@ def main():
             errors.append(f"{name}({series_id}): {data['error']}")
 
     result["errors"] = errors
+
+    os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
