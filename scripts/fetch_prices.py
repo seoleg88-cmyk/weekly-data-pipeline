@@ -16,6 +16,7 @@
 (한 티커 실패가 전체를 중단시키지 않도록).
 """
 import json
+import os
 import sys
 from datetime import datetime, timezone
 
@@ -113,6 +114,8 @@ def main():
             errors.append(f"{name}({ticker}): {data['error']}")
 
     result["errors"] = errors
+
+    os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
