@@ -1,5 +1,11 @@
 {
-  "generated_at_utc": "2026-10-10T08:26:28Z",
+  "anchors": {
+    "week_start": "2026-10-05",
+    "week_end": "2026-10-09",
+    "prev_week_end": "2026-10-02",
+    "month_anchor": "2026-09-09"
+  },
+  "generated_at_utc": "2026-10-11T13:47:48Z",
   "source": "Federal Reserve Bank of St. Louis (FRED), keyless CSV endpoint",
   "note": "한국은행 기준금리는 ECOS API 키 발급 후 phase 2에서 추가 예정",
   "series": {
@@ -11,15 +17,17 @@
         "value": 5.22
       },
       "week_ago": {
-        "date": "2026-10-01",
-        "value": 5.24
+        "date": "2026-10-02",
+        "value": 5.28
       },
       "month_ago": {
         "date": "2026-09-09",
         "value": 4.83
       },
-      "pp_1w": -0.02,
-      "pp_1m": 0.39
+      "pp_1w": -0.06,
+      "pp_1m": 0.39,
+      "week_obs_days": 4,
+      "lag_days": 1
     },
     "UST2Y": {
       "name": "UST2Y",
@@ -29,15 +37,17 @@
         "value": 4.75
       },
       "week_ago": {
-        "date": "2026-10-01",
-        "value": 4.78
+        "date": "2026-10-02",
+        "value": 4.83
       },
       "month_ago": {
         "date": "2026-09-09",
         "value": 4.43
       },
-      "pp_1w": -0.03,
-      "pp_1m": 0.32
+      "pp_1w": -0.08,
+      "pp_1m": 0.32,
+      "week_obs_days": 4,
+      "lag_days": 1
     },
     "FED_TARGET_UPPER": {
       "name": "FED_TARGET_UPPER",
@@ -47,15 +57,17 @@
         "value": 4.0
       },
       "week_ago": {
-        "date": "2026-10-04",
+        "date": "2026-10-02",
         "value": 4.0
       },
       "month_ago": {
-        "date": "2026-09-18",
-        "value": 4.0
+        "date": "2026-09-09",
+        "value": 3.75
       },
       "pp_1w": 0.0,
-      "pp_1m": 0.0
+      "pp_1m": 0.25,
+      "week_obs_days": 7,
+      "lag_days": 0
     },
     "FED_TARGET_LOWER": {
       "name": "FED_TARGET_LOWER",
@@ -65,15 +77,17 @@
         "value": 3.75
       },
       "week_ago": {
-        "date": "2026-10-04",
+        "date": "2026-10-02",
         "value": 3.75
       },
       "month_ago": {
-        "date": "2026-09-18",
-        "value": 3.75
+        "date": "2026-09-09",
+        "value": 3.5
       },
       "pp_1w": 0.0,
-      "pp_1m": 0.0
+      "pp_1m": 0.25,
+      "week_obs_days": 7,
+      "lag_days": 0
     }
   },
   "errors": []
