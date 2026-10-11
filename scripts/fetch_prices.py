@@ -1,30 +1,26 @@
 """
-주간 브리핑용 시세 데이터 수집 스크립트.
+주간 브리핑용 시세 수집 (yfinance).
 
-11개 자산 중 야후 파이낸스(yfinance)로 받을 수 있는 9개를 받는다.
-(미국 10년물/2년물 국채금리는 fetch_rates.py에서 FRED로 따로 받는다.)
+v2: 비교 기준일을 scripts/anchors.py의 달력 앵커로 통일한다.
+  latest    = 지난주 금요일 이하 마지막 종가
+  week_ago  = 그 전주 금요일 이하 마지막 종가   → pct_1w = 지난주 한 주의 수익률
+  month_ago = 지난주 금요일 1개월 전 이하 마지막 종가
+휴장일은 '이하 마지막 관측치' 규칙으로 자동 처리되고, 지난주 실제 거래일 수는
+week_trading_days 로 따로 남긴다 (예: 추석·한글날 주간은 3).
 
-핵심 설계: "1주 전", "1개월 전"을 달력 날짜가 아니라 실제 거래일 인덱스로 찾는다.
-야후 파이낸스가 돌려주는 일봉 히스토리는 그 시장의 실제 휴장일(추석, 성탄절 등)이
-이미 빠진 상태이므로, 뒤에서 N번째 행을 그냥 집으면 자동으로 "직전 거래일 기준
-실제 1주 전/1개월 전"이 된다. 사람이 "이번주는 추석 연휴라 9/23을 써야 한다"를
-수동으로 계산할 필요가 없다.
-
-출력: JSON (지정한 경로, 기본 data/latest.json)
-각 자산마다 latest/week_ago/month_ago의 날짜+종가와, 1주/1개월 변동률(%)을 포함한다.
-데이터를 못 가져온 자산은 "error" 필드에 이유를 남기고 스크립트는 계속 진행한다
-(한 티커 실패가 전체를 중단시키지 않도록).
+core  : 브리핑 시장표 10개 자산 (기존 키 그대로 유지 — 하위 호환)
+extra : Blogger·티스토리 분석용 (EWY, 필라델피아 반도체, 삼성전자, SK하이닉스, TSMC ADR)
+derived: 코스피·코스닥 달러 환산 수익률 (해외 투자자 관점)
 """
 import json
 import os
 import sys
 from datetime import datetime, timezone
 
-# yfinance는 fetch_one() 안에서 지연 임포트한다 (단위 테스트가 네트워크 패키지
-# 설치 없이도 row_at/pct_change 같은 순수 로직만 돌릴 수 있도록).
+sys.path.insert(0, os.path.dirname(__file__))
+from anchors import compute_anchors, last_on_or_before, count_in_week, run_date_from_env  # noqa: E402
 
-# 자산명 -> 야후 파이낸스 티커
-TICKERS = {
+CORE = {
     "KOSPI": "^KS11",
     "KOSDAQ": "^KQ11",
     "SP500": "^GSPC",
@@ -36,12 +32,13 @@ TICKERS = {
     "GOLD": "GC=F",
     "BTC-USD": "BTC-USD",
 }
-
-# 1주 = 5 거래일 전, 1개월 = 21 거래일 전 (관례적 거래일수 근사)
-WEEK_OFFSET = 5
-MONTH_OFFSET = 21
-
-# 히스토리를 넉넉히 받아야 21거래일 전 + 휴장일 버퍼가 항상 확보된다
+EXTRA = {
+    "EWY": "EWY",
+    "SOX": "^SOX",
+    "SAMSUNG": "005930.KS",
+    "SKHYNIX": "000660.KS",
+    "TSM": "TSM",
+}
 HISTORY_PERIOD = "6mo"
 
 
@@ -52,82 +49,111 @@ def pct_change(cur, base):
 
 
 def row_at(df, offset):
-    """최근 종가로부터 offset 거래일 전 행을 돌려준다. 데이터 부족하면 None."""
+    """(v1 호환) 최근 종가로부터 offset 거래일 전 행."""
     n = len(df)
     idx = n - 1 - offset
     if idx < 0:
         return None
-    row = df.iloc[idx]
-    return {
-        "date": df.index[idx].strftime("%Y-%m-%d"),
-        "close": round(float(row["Close"]), 6),
-    }
+    return {"date": df.index[idx].strftime("%Y-%m-%d"), "close": round(float(df.iloc[idx]["Close"]), 6)}
 
 
-def fetch_one(name, ticker):
-    import yfinance as yf  # 지연 임포트: 순수 로직 테스트는 이 줄에 닿지 않는다
-
-    df = yf.Ticker(ticker).history(period=HISTORY_PERIOD, interval="1d", auto_adjust=False)
-    if df is None or df.empty:
-        return {"name": name, "ticker": ticker, "error": "no_data_returned"}
-
+def df_to_rows(df):
+    """DataFrame(Close) -> [(date, close)] 오름차순. 인덱스의 거래소 현지 날짜 사용."""
     df = df.sort_index()
     df = df[df["Close"].notna()]
-    if df.empty:
-        return {"name": name, "ticker": ticker, "error": "all_close_nan"}
+    return [(ts.date(), round(float(c), 6)) for ts, c in zip(df.index, df["Close"])]
 
-    latest = row_at(df, 0)
-    week_ago = row_at(df, WEEK_OFFSET)
-    month_ago = row_at(df, MONTH_OFFSET)
 
-    out = {
-        "name": name,
-        "ticker": ticker,
-        "latest": latest,
-        "week_ago": week_ago,
-        "month_ago": month_ago,
-    }
-    if latest and week_ago:
-        out["pct_1w"] = pct_change(latest["close"], week_ago["close"])
-    if latest and month_ago:
-        out["pct_1m"] = pct_change(latest["close"], month_ago["close"])
+def summarize(rows, anchors):
+    """rows로부터 latest/week_ago/month_ago와 변동률 계산 (네트워크 없음, 테스트 대상)."""
+    out = {}
+    for key, target in (("latest", anchors["week_end"]),
+                        ("week_ago", anchors["prev_week_end"]),
+                        ("month_ago", anchors["month_anchor"])):
+        hit = last_on_or_before(rows, target)
+        out[key] = {"date": hit[0].isoformat(), "close": hit[1]} if hit else None
+    if out["latest"] and out["week_ago"]:
+        out["pct_1w"] = pct_change(out["latest"]["close"], out["week_ago"]["close"])
+    if out["latest"] and out["month_ago"]:
+        out["pct_1m"] = pct_change(out["latest"]["close"], out["month_ago"]["close"])
+    out["week_trading_days"] = count_in_week(rows, anchors)
+    if out["latest"]:
+        from datetime import date
+        out["lag_days"] = (anchors["week_end"] - date.fromisoformat(out["latest"]["date"])).days
     return out
+
+
+def usd_return(eq_rows, fx_rows, anchors):
+    """원화 지수의 달러 환산 수익률. 각 기준일의 지수 날짜 이하 마지막 USD/KRW로 환산."""
+    res = {}
+    pts = {}
+    for key, target in (("latest", anchors["week_end"]),
+                        ("week_ago", anchors["prev_week_end"]),
+                        ("month_ago", anchors["month_anchor"])):
+        eq = last_on_or_before(eq_rows, target)
+        fx = last_on_or_before(fx_rows, eq[0]) if eq else None
+        pts[key] = (eq, fx)
+        res[key] = ({"index_date": eq[0].isoformat(), "fx_date": fx[0].isoformat(),
+                     "usd_value": round(eq[1] / fx[1], 6)} if eq and fx else None)
+    if res["latest"] and res["week_ago"]:
+        res["pct_1w_usd"] = pct_change(res["latest"]["usd_value"], res["week_ago"]["usd_value"])
+    if res["latest"] and res["month_ago"]:
+        res["pct_1m_usd"] = pct_change(res["latest"]["usd_value"], res["month_ago"]["usd_value"])
+    return res
+
+
+def fetch_rows(ticker):
+    import yfinance as yf  # 지연 임포트
+    df = yf.Ticker(ticker).history(period=HISTORY_PERIOD, interval="1d", auto_adjust=False)
+    if df is None or df.empty:
+        raise RuntimeError("no_data_returned")
+    rows = df_to_rows(df)
+    if not rows:
+        raise RuntimeError("all_close_nan")
+    return rows
 
 
 def main():
     out_path = sys.argv[1] if len(sys.argv) > 1 else "data/latest_prices.json"
+    anchors = compute_anchors(run_date_from_env(datetime.now(timezone.utc).date()))
 
     result = {
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "method": "yfinance daily history, trading-day offset (1wk=5 trading days, 1mo=21 trading days)",
+        "method": "v2 calendar anchors: latest<=week_end(Fri), week_ago<=prev Fri, month_ago<=week_end-1month",
+        "anchors": {k: v.isoformat() for k, v in anchors.items()},
         "assets": {},
+        "extra": {},
+        "derived": {},
     }
-    errors = []
+    errors, rows_cache = [], {}
 
-    for name, ticker in TICKERS.items():
-        try:
-            data = fetch_one(name, ticker)
-        except Exception as e:  # noqa: BLE001 - 한 티커 실패해도 나머지는 계속
-            data = {"name": name, "ticker": ticker, "error": f"{type(e).__name__}: {e}"}
-        result["assets"][name] = data
-        if "error" in data:
-            errors.append(f"{name}({ticker}): {data['error']}")
+    for group, table in (("assets", CORE), ("extra", EXTRA)):
+        for name, ticker in table.items():
+            try:
+                rows = fetch_rows(ticker)
+                rows_cache[name] = rows
+                data = {"name": name, "ticker": ticker, **summarize(rows, anchors)}
+            except Exception as e:  # noqa: BLE001
+                data = {"name": name, "ticker": ticker, "error": f"{type(e).__name__}: {e}"}
+                errors.append(f"{name}({ticker}): {data['error']}")
+            result[group][name] = data
+
+    fx = rows_cache.get("USDKRW")
+    for name in ("KOSPI", "KOSDAQ", "SAMSUNG", "SKHYNIX"):
+        if fx and name in rows_cache:
+            result["derived"][f"{name}_USD"] = usd_return(rows_cache[name], fx, anchors)
 
     result["errors"] = errors
-
     os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
-
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {out_path} ({len(TICKERS) - len(errors)}/{len(TICKERS)} assets OK)")
+    total = len(CORE) + len(EXTRA)
+    print(f"Wrote {out_path} ({total - len(errors)}/{total} OK) anchors={result['anchors']}")
     if errors:
-        print("ERRORS:", file=sys.stderr)
-        for e in errors:
-            print(" -", e, file=sys.stderr)
-        # 일부 실패는 있어도 전체를 실패로 처리하지 않는다 (나머지 데이터는 유효하므로).
-        # 전부 실패했을 때만 비정상 종료 코드를 준다.
-        if len(errors) == len(TICKERS):
+        print("ERRORS:", *errors, sep="\n - ", file=sys.stderr)
+        core_fail = [e for e in errors if e.split("(")[0] in CORE]
+        if len(core_fail) == len(CORE):
             sys.exit(1)
 
 
