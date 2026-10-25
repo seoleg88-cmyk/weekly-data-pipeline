@@ -1,30 +1,30 @@
 {
-  "generated_at_utc": "2026-10-18T02:20:34Z",
+  "generated_at_utc": "2026-10-25T02:30:47Z",
   "method": "v2 calendar anchors: latest<=week_end(Fri), week_ago<=prev Fri, month_ago<=week_end-1month",
   "anchors": {
-    "week_start": "2026-10-12",
-    "week_end": "2026-10-16",
-    "prev_week_end": "2026-10-09",
-    "month_anchor": "2026-09-16"
+    "week_start": "2026-10-19",
+    "week_end": "2026-10-23",
+    "prev_week_end": "2026-10-16",
+    "month_anchor": "2026-09-23"
   },
   "assets": {
     "KOSPI": {
       "name": "KOSPI",
       "ticker": "^KS11",
       "latest": {
+        "date": "2026-10-23",
+        "close": 5550.299805
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 5668.049805
       },
-      "week_ago": {
-        "date": "2026-10-08",
-        "close": 6625.930176
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 6717.970215
+        "date": "2026-09-23",
+        "close": 7080.919922
       },
-      "pct_1w": -14.4565,
-      "pct_1m": -15.6285,
+      "pct_1w": -2.0774,
+      "pct_1m": -21.6161,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -32,19 +32,19 @@
       "name": "KOSDAQ",
       "ticker": "^KQ11",
       "latest": {
+        "date": "2026-10-23",
+        "close": 751.690002
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 794.780029
       },
-      "week_ago": {
-        "date": "2026-10-08",
-        "close": 892.27002
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 815.97998
+        "date": "2026-09-23",
+        "close": 844.47998
       },
-      "pct_1w": -10.9261,
-      "pct_1m": -2.5981,
+      "pct_1w": -5.4216,
+      "pct_1m": -10.9878,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -52,19 +52,19 @@
       "name": "SP500",
       "ticker": "^GSPC",
       "latest": {
+        "date": "2026-10-23",
+        "close": 7623.680176
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 7659.439941
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 7811.540039
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 7551.810059
+        "date": "2026-09-23",
+        "close": 7706.029785
       },
-      "pct_1w": -1.9471,
-      "pct_1m": 1.4252,
+      "pct_1w": -0.4669,
+      "pct_1m": -1.0686,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -72,19 +72,19 @@
       "name": "NASDAQ",
       "ticker": "^IXIC",
       "latest": {
+        "date": "2026-10-23",
+        "close": 25955.339844
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 26140.029297
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 27366.169922
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 25978.429688
+        "date": "2026-09-23",
+        "close": 26936.039062
       },
-      "pct_1w": -4.4805,
-      "pct_1m": 0.6221,
+      "pct_1w": -0.7065,
+      "pct_1m": -3.6408,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -92,19 +92,19 @@
       "name": "DOW",
       "ticker": "^DJI",
       "latest": {
+        "date": "2026-10-23",
+        "close": 52215.160156
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 52002.410156
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 51654.949219
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 51461.898438
+        "date": "2026-09-23",
+        "close": 51511.589844
       },
-      "pct_1w": 0.6727,
-      "pct_1m": 1.0503,
+      "pct_1w": 0.4091,
+      "pct_1m": 1.3658,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -112,19 +112,19 @@
       "name": "USDKRW",
       "ticker": "KRW=X",
       "latest": {
+        "date": "2026-10-23",
+        "close": 1325.98999
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 1340.949951
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 1342.98999
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 1363.569946
+        "date": "2026-09-23",
+        "close": 1350.359985
       },
-      "pct_1w": -0.1519,
-      "pct_1m": -1.6589,
+      "pct_1w": -1.1156,
+      "pct_1m": -1.8047,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -132,19 +132,19 @@
       "name": "WTI",
       "ticker": "CL=F",
       "latest": {
+        "date": "2026-10-23",
+        "close": 103.269997
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 101.410004
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 91.849998
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 102.43
+        "date": "2026-09-23",
+        "close": 92.160004
       },
-      "pct_1w": 10.4083,
-      "pct_1m": -0.9958,
+      "pct_1w": 1.8341,
+      "pct_1m": 12.0551,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -152,19 +152,19 @@
       "name": "BRENT",
       "ticker": "BZ=F",
       "latest": {
+        "date": "2026-10-23",
+        "close": 116.720001
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 109.860001
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 104.720001
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 105.830002
+        "date": "2026-09-23",
+        "close": 103.080002
       },
-      "pct_1w": 4.9083,
-      "pct_1m": 3.808,
+      "pct_1w": 6.2443,
+      "pct_1m": 13.2324,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -172,19 +172,19 @@
       "name": "GOLD",
       "ticker": "GC=F",
       "latest": {
+        "date": "2026-10-23",
+        "close": 4007.899902
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 4181.100098
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 4216.299805
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 4387.5
+        "date": "2026-09-23",
+        "close": 4318.399902
       },
-      "pct_1w": -0.8348,
-      "pct_1m": -4.7043,
+      "pct_1w": -4.1425,
+      "pct_1m": -7.1902,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -192,19 +192,19 @@
       "name": "BTC-USD",
       "ticker": "BTC-USD",
       "latest": {
+        "date": "2026-10-23",
+        "close": 81074.1875
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 81500.804688
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 82546.320312
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 76150.320312
+        "date": "2026-09-23",
+        "close": 84383.007812
       },
-      "pct_1w": -1.2666,
-      "pct_1m": 7.0262,
+      "pct_1w": -0.5235,
+      "pct_1m": -3.9212,
       "week_trading_days": 7,
       "lag_days": 0
     }
@@ -214,19 +214,19 @@
       "name": "EWY",
       "ticker": "EWY",
       "latest": {
+        "date": "2026-10-23",
+        "close": 151.259995
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 150.440002
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 177.240005
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 175.539993
+        "date": "2026-09-23",
+        "close": 185.649994
       },
-      "pct_1w": -15.1207,
-      "pct_1m": -14.2987,
+      "pct_1w": 0.5451,
+      "pct_1m": -18.5241,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -234,19 +234,19 @@
       "name": "SOX",
       "ticker": "^SOX",
       "latest": {
+        "date": "2026-10-23",
+        "close": 10779.459961
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 11137.290039
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 12572.419922
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 11246.110352
+        "date": "2026-09-23",
+        "close": 12534.280273
       },
-      "pct_1w": -11.4149,
-      "pct_1m": -0.9676,
+      "pct_1w": -3.2129,
+      "pct_1m": -14.0002,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -254,19 +254,19 @@
       "name": "SAMSUNG",
       "ticker": "005930.KS",
       "latest": {
-        "date": "2026-10-16",
+        "date": "2026-10-23",
         "close": 215500.0
       },
       "week_ago": {
-        "date": "2026-10-08",
-        "close": 262000.0
+        "date": "2026-10-16",
+        "close": 215500.0
       },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 253500.0
+        "date": "2026-09-23",
+        "close": 285500.0
       },
-      "pct_1w": -17.7481,
-      "pct_1m": -14.9901,
+      "pct_1w": 0.0,
+      "pct_1m": -24.5184,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -274,19 +274,19 @@
       "name": "SKHYNIX",
       "ticker": "000660.KS",
       "latest": {
+        "date": "2026-10-23",
+        "close": 1277000.0
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 1272000.0
       },
-      "week_ago": {
-        "date": "2026-10-08",
-        "close": 1681000.0
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 1759000.0
+        "date": "2026-09-23",
+        "close": 1862000.0
       },
-      "pct_1w": -24.3308,
-      "pct_1m": -27.6862,
+      "pct_1w": 0.3931,
+      "pct_1m": -31.4178,
       "week_trading_days": 5,
       "lag_days": 0
     },
@@ -294,19 +294,19 @@
       "name": "TSM",
       "ticker": "TSM",
       "latest": {
+        "date": "2026-10-23",
+        "close": 418.51001
+      },
+      "week_ago": {
         "date": "2026-10-16",
         "close": 412.609985
       },
-      "week_ago": {
-        "date": "2026-10-09",
-        "close": 453.309998
-      },
       "month_ago": {
-        "date": "2026-09-16",
-        "close": 417.720001
+        "date": "2026-09-23",
+        "close": 446.570007
       },
-      "pct_1w": -8.9784,
-      "pct_1m": -1.2233,
+      "pct_1w": 1.4299,
+      "pct_1m": -6.2834,
       "week_trading_days": 5,
       "lag_days": 0
     }
@@ -314,79 +314,79 @@
   "derived": {
     "KOSPI_USD": {
       "latest": {
+        "index_date": "2026-10-23",
+        "fx_date": "2026-10-23",
+        "usd_value": 4.185778
+      },
+      "week_ago": {
         "index_date": "2026-10-16",
         "fx_date": "2026-10-16",
         "usd_value": 4.226891
       },
-      "week_ago": {
-        "index_date": "2026-10-08",
-        "fx_date": "2026-10-08",
-        "usd_value": 4.948121
-      },
       "month_ago": {
-        "index_date": "2026-09-16",
-        "fx_date": "2026-09-16",
-        "usd_value": 4.926751
+        "index_date": "2026-09-23",
+        "fx_date": "2026-09-23",
+        "usd_value": 5.243728
       },
-      "pct_1w_usd": -14.5758,
-      "pct_1m_usd": -14.2053
+      "pct_1w_usd": -0.9727,
+      "pct_1m_usd": -20.1755
     },
     "KOSDAQ_USD": {
       "latest": {
+        "index_date": "2026-10-23",
+        "fx_date": "2026-10-23",
+        "usd_value": 0.56689
+      },
+      "week_ago": {
         "index_date": "2026-10-16",
         "fx_date": "2026-10-16",
         "usd_value": 0.592699
       },
-      "week_ago": {
-        "index_date": "2026-10-08",
-        "fx_date": "2026-10-08",
-        "usd_value": 0.666331
-      },
       "month_ago": {
-        "index_date": "2026-09-16",
-        "fx_date": "2026-09-16",
-        "usd_value": 0.598414
+        "index_date": "2026-09-23",
+        "fx_date": "2026-09-23",
+        "usd_value": 0.625374
       },
-      "pct_1w_usd": -11.0504,
-      "pct_1m_usd": -0.955
+      "pct_1w_usd": -4.3545,
+      "pct_1m_usd": -9.3518
     },
     "SAMSUNG_USD": {
       "latest": {
+        "index_date": "2026-10-23",
+        "fx_date": "2026-10-23",
+        "usd_value": 162.520081
+      },
+      "week_ago": {
         "index_date": "2026-10-16",
         "fx_date": "2026-10-16",
         "usd_value": 160.706967
       },
-      "week_ago": {
-        "index_date": "2026-10-08",
-        "fx_date": "2026-10-08",
-        "usd_value": 195.656726
-      },
       "month_ago": {
-        "index_date": "2026-09-16",
-        "fx_date": "2026-09-16",
-        "usd_value": 185.909055
+        "index_date": "2026-09-23",
+        "fx_date": "2026-09-23",
+        "usd_value": 211.425104
       },
-      "pct_1w_usd": -17.8628,
-      "pct_1m_usd": -13.5561
+      "pct_1w_usd": 1.1282,
+      "pct_1m_usd": -23.1311
     },
     "SKHYNIX_USD": {
       "latest": {
+        "index_date": "2026-10-23",
+        "fx_date": "2026-10-23",
+        "usd_value": 963.054027
+      },
+      "week_ago": {
         "index_date": "2026-10-16",
         "fx_date": "2026-10-16",
         "usd_value": 948.581264
       },
-      "week_ago": {
-        "index_date": "2026-10-08",
-        "fx_date": "2026-10-08",
-        "usd_value": 1255.339528
-      },
       "month_ago": {
-        "index_date": "2026-09-16",
-        "fx_date": "2026-09-16",
-        "usd_value": 1289.996164
+        "index_date": "2026-09-23",
+        "fx_date": "2026-09-23",
+        "usd_value": 1378.89157
       },
-      "pct_1w_usd": -24.4363,
-      "pct_1m_usd": -26.4664
+      "pct_1w_usd": 1.5257,
+      "pct_1m_usd": -30.1574
     }
   },
   "errors": []
