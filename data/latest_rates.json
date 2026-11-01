@@ -1,11 +1,11 @@
 {
   "anchors": {
-    "week_start": "2026-10-19",
-    "week_end": "2026-10-23",
-    "prev_week_end": "2026-10-16",
-    "month_anchor": "2026-09-23"
+    "week_start": "2026-10-26",
+    "week_end": "2026-10-30",
+    "prev_week_end": "2026-10-23",
+    "month_anchor": "2026-09-30"
   },
-  "generated_at_utc": "2026-10-25T02:30:50Z",
+  "generated_at_utc": "2026-11-01T03:32:10Z",
   "source": "Federal Reserve Bank of St. Louis (FRED), keyless CSV endpoint",
   "note": "한국은행 기준금리는 ECOS API 키 발급 후 phase 2에서 추가 예정",
   "series": {
@@ -13,19 +13,19 @@
       "name": "UST10Y",
       "series_id": "DGS10",
       "latest": {
-        "date": "2026-10-22",
-        "value": 4.96
+        "date": "2026-10-29",
+        "value": 4.98
       },
       "week_ago": {
-        "date": "2026-10-16",
-        "value": 5.09
+        "date": "2026-10-23",
+        "value": 5.0
       },
       "month_ago": {
-        "date": "2026-09-23",
-        "value": 5.11
+        "date": "2026-09-30",
+        "value": 5.29
       },
-      "pp_1w": -0.13,
-      "pp_1m": -0.15,
+      "pp_1w": -0.02,
+      "pp_1m": -0.31,
       "week_obs_days": 4,
       "lag_days": 1
     },
@@ -33,19 +33,19 @@
       "name": "UST2Y",
       "series_id": "DGS2",
       "latest": {
-        "date": "2026-10-22",
-        "value": 4.65
+        "date": "2026-10-29",
+        "value": 4.61
       },
       "week_ago": {
-        "date": "2026-10-16",
-        "value": 4.74
+        "date": "2026-10-23",
+        "value": 4.69
       },
       "month_ago": {
-        "date": "2026-09-23",
-        "value": 4.85
+        "date": "2026-09-30",
+        "value": 4.88
       },
-      "pp_1w": -0.09,
-      "pp_1m": -0.2,
+      "pp_1w": -0.08,
+      "pp_1m": -0.27,
       "week_obs_days": 4,
       "lag_days": 1
     },
@@ -53,15 +53,15 @@
       "name": "FED_TARGET_UPPER",
       "series_id": "DFEDTARU",
       "latest": {
-        "date": "2026-10-23",
+        "date": "2026-10-30",
         "value": 4.0
       },
       "week_ago": {
-        "date": "2026-10-16",
+        "date": "2026-10-23",
         "value": 4.0
       },
       "month_ago": {
-        "date": "2026-09-23",
+        "date": "2026-09-30",
         "value": 4.0
       },
       "pp_1w": 0.0,
@@ -73,15 +73,15 @@
       "name": "FED_TARGET_LOWER",
       "series_id": "DFEDTARL",
       "latest": {
-        "date": "2026-10-23",
+        "date": "2026-10-30",
         "value": 3.75
       },
       "week_ago": {
-        "date": "2026-10-16",
+        "date": "2026-10-23",
         "value": 3.75
       },
       "month_ago": {
-        "date": "2026-09-23",
+        "date": "2026-09-30",
         "value": 3.75
       },
       "pp_1w": 0.0,
